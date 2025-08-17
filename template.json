@@ -1,9 +1,9 @@
 {
-  "name": "wails-svelte-vite-template",
+  "name": "Svelte5 Wails Template",
   "shortname": "",
-  "author": "",
-  "description": "",
-  "helpurl": "",
-  "version": "v0.0.1",
+  "author": "David illsA",
+  "description": "A template with my preferred setup",
+  "helpurl": "https://github.com/yourusername/template-docs",
+  "version": "v1.0.0",
   "schema": 3
 }

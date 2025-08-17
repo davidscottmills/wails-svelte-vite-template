@@ -8,7 +8,7 @@
         AllowPromptForPassword="false">
     </Settings>
     <Installer
-        Path="{{.ExecutablePath}}"
+        Path="{{.ProductName}}"
         Arguments=""
         InstallLocation="C:\Program Files\{{.ProductCompany}}\{{.ProductName}}">
     </Installer>
@@ -21,30 +21,16 @@
         PackageDescription="{{.ProductDescription}}">
         <Capabilities>
             <Capability Name="runFullTrust" />
-            {{if .FileAssociations}}
-            <Capability Name="documentsLibrary" />
-            {{end}}
+
         </Capabilities>
         <Applications>
             <Application
                 Id="{{.ProductIdentifier}}"
                 Description="{{.ProductDescription}}"
                 DisplayName="{{.ProductName}}"
-                ExecutableName="{{.ExecutableName}}"
+                ExecutableName="{{.ProductName}}"
                 EntryPoint="Windows.FullTrustApplication">
-                {{if .FileAssociations}}
-                <Extensions>
-                    <Extension Category="windows.fileTypeAssociation">
-                        <FileTypeAssociation Name="{{.ProductIdentifier}}">
-                            {{range .FileAssociations}}
-                            <SupportedFileTypes>
-                                <FileType>.{{.Ext}}</FileType>
-                            </SupportedFileTypes>
-                            {{end}}
-                        </FileTypeAssociation>
-                    </Extension>
-                </Extensions>
-                {{end}}
+
             </Application>
         </Applications>
         <Resources>
@@ -61,8 +47,8 @@
             <Logo>Assets\AppIcon.png</Logo>
         </Properties>
     </PackageInformation>
-    <SaveLocation PackagePath="{{.OutputPath}}" />
+    <SaveLocation PackagePath="{{.ProductName}}" />
     <PackageIntegrity>
-        <CertificatePath>{{.CertificatePath}}</CertificatePath>
+        <CertificatePath></CertificatePath>
     </PackageIntegrity>
 </MsixPackagingToolTemplate>

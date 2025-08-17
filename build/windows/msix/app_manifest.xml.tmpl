@@ -7,9 +7,9 @@
   
   <Identity 
     Name="{{.ProductIdentifier}}"
-    Publisher="{{.Publisher}}"
+    Publisher="{{.ProductCompany}}"
     Version="{{.ProductVersion}}.0" 
-    ProcessorArchitecture="{{.ProcessorArchitecture}}" />
+    ProcessorArchitecture="x64" />
   
   <Properties>
     <DisplayName>{{.ProductName}}</DisplayName>
@@ -40,28 +40,12 @@
       
       <Extensions>
         <desktop:Extension Category="windows.fullTrustProcess" Executable="{{.BinaryName}}" />
-        {{if .FileAssociations}}
-        <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="{{.ProductIdentifier}}">
-            <uap:DisplayName>{{.ProductName}}</uap:DisplayName>
-            <uap:Logo>Assets\FileIcon.png</uap:Logo>
-            <uap:InfoTip>{{.ProductName}} File</uap:InfoTip>
-            <uap:SupportedFileTypes>
-              {{range .FileAssociations}}
-              <uap:FileType>.{{.Ext}}</uap:FileType>
-              {{end}}
-            </uap:SupportedFileTypes>
-          </uap:FileTypeAssociation>
-        </uap:Extension>
-        {{end}}
       </Extensions>
     </Application>
   </Applications>
   
   <Capabilities>
     <rescap:Capability Name="runFullTrust" />
-    {{if .FileAssociations}}
-    <uap:Capability Name="documentsLibrary" />
-    {{end}}
+    
   </Capabilities>
 </Package>
