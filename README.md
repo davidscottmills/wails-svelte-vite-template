@@ -2,6 +2,24 @@
 
 Congratulations on generating your Wails3 application! This README will guide you through the next steps to get your project up and running.
 
+## Issues
+
+There are some issues when initially runing after generating from the template. You may see something like:
+
+```
+sh: <path to your project>/frontend/node_modules/.bin/vite: Permission denied
+```
+
+If you encouter this, perform the following:
+
+```
+cd frontend
+rm -rf node_modules package-lock.json
+npm i
+cd ..
+wails3 dev
+```
+
 ## Getting Started
 
 1. Navigate to your project directory in the terminal.
