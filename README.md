@@ -40,6 +40,7 @@ wails3 dev
 2. To run your application in development mode, use the following command:
 
    ```
+   wails3 generate bindings -ts
    wails3 dev
    ```
 

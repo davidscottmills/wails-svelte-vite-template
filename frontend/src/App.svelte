@@ -6,19 +6,19 @@
   let result = $state("Please enter your name below 👇");
   let time = $state("Listening for Time event...");
 
-  const doGreet = () => {
+  async function greet() {
     let localName = name;
     if (!localName) {
       localName = "anonymous";
     }
-    GreetService.Greet(localName)
-      .then((resultValue: string) => {
-        result = resultValue;
-      })
-      .catch((err: Error) => {
-        console.log(err);
-      });
-  };
+
+    try {
+      result = await GreetService.Greet(localName);
+    } catch (err) {
+      console.error(err);
+      result = "An error occurred while greeting.";
+    }
+  }
 
   Events.On("time", (timeValue: any) => {
     time = timeValue.data;
@@ -39,7 +39,7 @@
   <div class="card">
     <div class="input-box">
       <input class="input" bind:value={name} type="text" autocomplete="off" />
-      <button class="btn" onclick={doGreet}>Greet</button>
+      <button class="btn" onclick={greet}>Greet</button>
     </div>
   </div>
   <div class="footer">
