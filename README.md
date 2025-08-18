@@ -11,6 +11,12 @@ Congratulations on generating your Wails3 application! This README will guide yo
 
 ## Issues
 
+The wails3 cli does not remove the `.git` directory, so do the following step and add your own source control.
+
+```
+rm -rf .git
+```
+
 There are some issues when initially runing after generating from the template. You may see something like:
 
 ```
