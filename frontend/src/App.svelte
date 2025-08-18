@@ -2,9 +2,9 @@
   import { GreetService } from "../bindings/changeme";
   import { Events } from "@wailsio/runtime";
 
-  let name = "";
-  let result = "Please enter your name below 👇";
-  let time = "Listening for Time event...";
+  let name = $state("");
+  let result = $state("Please enter your name below 👇");
+  let time = $state("Listening for Time event...");
 
   const doGreet = () => {
     let localName = name;
@@ -12,15 +12,15 @@
       localName = "anonymous";
     }
     GreetService.Greet(localName)
-      .then((resultValue) => {
+      .then((resultValue: string) => {
         result = resultValue;
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         console.log(err);
       });
   };
 
-  Events.On("time", (timeValue) => {
+  Events.On("time", (timeValue: any) => {
     time = timeValue.data;
   });
 </script>
@@ -39,7 +39,7 @@
   <div class="card">
     <div class="input-box">
       <input class="input" bind:value={name} type="text" autocomplete="off" />
-      <button class="btn" on:click={doGreet}>Greet</button>
+      <button class="btn" onclick={doGreet}>Greet</button>
     </div>
   </div>
   <div class="footer">
